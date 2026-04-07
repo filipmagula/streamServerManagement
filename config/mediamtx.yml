@@ -1,0 +1,24 @@
+# MediaMTX Configuration
+
+# Address for RTSP
+rtspAddress: :8554
+
+# Address for WebRTC
+webrtcAddress: :8889
+
+# Address for HLS
+hlsAddress: :8888
+
+# Address for the REST API
+apiAddress: :9997
+
+# Enable protocols
+rtsp: yes
+webrtc: yes
+hls: yes
+api: yes
+
+# Allow all publishers
+paths:
+  all:
+    # All paths are accepted and automatically created
