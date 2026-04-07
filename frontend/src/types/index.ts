@@ -9,6 +9,7 @@ export interface Video {
 export interface Stream {
   id: string;
   video_id: string | null;
+  video_name?: string; // Added to fix build error
   rtsp_path: string;
   loop: number;
   state: 'idle' | 'active' | 'error' | 'scheduled';
@@ -16,6 +17,7 @@ export interface Stream {
   position?: string;
   percent?: number;
   fps?: number;
+  bitrate?: number; // Added to fix build error
 }
 
 export interface Schedule {

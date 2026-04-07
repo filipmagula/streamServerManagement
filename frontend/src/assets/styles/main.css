@@ -1,16 +1,23 @@
 :root {
-  --bg-deep: #f8fafc;
+  --bg-deep: #f3f4f6;
   --bg-card: #ffffff;
-  --accent-primary: #2563eb;
-  --accent-secondary: #3b82f6;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
+  --accent-primary: #6366f1; /* Indigo/Purple */
+  --accent-secondary: #4f46e5;
+  --accent-soft: #eef2ff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
-  --border: #e2e8f0;
+  --border: #e5e7eb;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 72px;
 }
 
 * {
@@ -20,7 +27,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-deep);
   color: var(--text-main);
   line-height: 1.5;
@@ -36,18 +43,19 @@ body {
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
   box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .btn {
   padding: 0.625rem 1.25rem;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
   font-weight: 500;
@@ -76,17 +84,18 @@ body {
 
 .btn-ghost:hover {
   background: var(--bg-deep);
-  border-color: #cbd5e1;
 }
 
 h1, h2, h3 {
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-main);
 }
 
 .text-gradient {
-  color: var(--text-main);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .text-muted {
@@ -96,4 +105,15 @@ h1, h2, h3 {
 pre, code {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.875rem;
+}
+
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

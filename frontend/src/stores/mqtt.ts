@@ -45,6 +45,9 @@ export const useMqttStore = defineStore('mqtt', {
     },
     sendCommand(streamId: string, action: string, data: any = {}) {
       this.publish(`environ/video/${streamId}/command`, { action, ...data })
+    },
+    clearMessages() {
+      this.messages = []
     }
   }
 })

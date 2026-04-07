@@ -65,7 +65,12 @@ class StreamService {
   }
 
   getAllStreams() {
-    const streams = db.prepare('SELECT * FROM streams').all() as Stream[];
+    const streams = db.prepare(`
+      SELECT s.*, v.name as video_name 
+      FROM streams s 
+      LEFT JOIN videos v ON s.video_id = v.id
+    `).all() as (Stream & { video_name?: string })[];
+    
     return streams.map(s => ({
       ...s,
       active: ffmpegManager.isRunning(s.id)
